@@ -6,7 +6,7 @@
 
     <div class="justify-center">
       <v-row v-if="this.showImages" justify="center" align="center">
-        <v-col v-for="(item, index) in dataImgs" :key="index" cols="auto">
+        <v-col v-for="(item, index) in dataImgs[positionIndex]" :key="index" cols="auto">
           <v-card class="ma-4" width="150" ripple @click="onSelectImage(item)">
             <v-img :src="item.candidato" height="150px" width="150">
               <v-row no-gutters>
@@ -16,7 +16,7 @@
                 <v-col class="text-center d-flex flex-row-reverse">
                   <p
                     class="black--text white pa-3 font-weight-bold"
-                    style="width:30px; height:30px;"
+                    style="width:50px; height:30px;"
                   >{{index+1}}</p>
                 </v-col>
               </v-row>
@@ -90,209 +90,334 @@ export default {
     //VueSelectImage
   },
   data: () => ({
-    positions: ["Regidor(a)", "Alcalde(sa)"],
+    positions: ["Alcalde(sa)", "Regidor(a)"],
     positionIndex: 0,
     dataImgs: [
-      {
-        id: "1",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/pld-150x150.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "PLD",
-        name: "Candidato"
-      },
+      [
+        {
+          id: "1",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/pld-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PLD",
+          name: "Candidato"
+        },
 
-      {
-        id: "2",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/prm-150x150.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "PRM",
-        name: "Candidato"
-      },
-      {
-        id: "3",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/prd-150x150.jpg",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "PRD",
-        name: "Candidato"
-      },
-      {
-        id: "4",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/reformista-150x150.jpg",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "PRSC",
-        name: "Candidato"
-      },
-      {
-        id: "4",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/ALPAIS-150x150.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "A. Pais",
-        name: "Candidato"
-      },
-      {
-        id: "5",
-        src:
-          "https://elecciones2020.club/wp-content/uploads/2020/01/4fz5fc_400x400-150x150.jpg",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
-      {
-        id: "6",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
-      {
-        id: "7",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
-      {
-        id: "8",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
-      {
-        id: "9",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
-      {
-        id: "10",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "2",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/prm-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRM",
+          name: "Candidato"
+        },
+        {
+          id: "3",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/prd-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRD",
+          name: "Candidato"
+        },
+        {
+          id: "4",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/reformista-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRSC",
+          name: "Candidato"
+        },
+        {
+          id: "4",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/ALPAIS-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "A. Pais",
+          name: "Candidato"
+        },
+        {
+          id: "5",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/4fz5fc_400x400-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "6",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "7",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "8",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "9",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "10",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "11",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "11",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "12",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "12",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "13",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "13",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "14",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "14",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "15",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "15",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "16",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "16",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "17",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "17",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "18",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "18",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "19",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      },
+        {
+          id: "19",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
 
-      {
-        id: "20",
-        src:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
-        candidato:
-          "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
-        alt: "Partido n",
-        name: "Candidato"
-      }
+        {
+          id: "20",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        }
+      ],
+      [
+        {
+          id: "1",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/pld-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PLD",
+          name: "Candidato"
+        },
+
+        {
+          id: "2",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/prm-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRM",
+          name: "Candidato"
+        },
+        {
+          id: "3",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/prd-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRD",
+          name: "Candidato"
+        },
+        {
+          id: "4",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/reformista-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "PRSC",
+          name: "Candidato"
+        },
+        {
+          id: "4",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/ALPAIS-150x150.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "A. Pais",
+          name: "Candidato"
+        },
+        {
+          id: "5",
+          src:
+            "https://elecciones2020.club/wp-content/uploads/2020/01/4fz5fc_400x400-150x150.jpg",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "6",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "7",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "8",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "9",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+        {
+          id: "10",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+
+        {
+          id: "11",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+
+        {
+          id: "12",
+          src:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-logo.png",
+          candidato:
+            "https://elecciones2020.club/wp-content/themes/elecciones/images/no-candidato.png",
+          alt: "Partido n",
+          name: "Candidato"
+        },
+
+      ]
     ],
     userSelection: [],
     votoData: {},
