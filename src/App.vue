@@ -1,61 +1,58 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="http://prm.org.do/wp-content/uploads/2019/01/logoprmheadweb.png"
           transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
+          width="150"
         />
       </div>
-
+      <p class="headline my-4">Simulador</p>
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
+      <v-btn href="http://www.prm.org.do/" target="_blank" text>
+        <span class="mr-2">PRM Oficial</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
-    <v-content>
-      <HelloWorld/>
+    <v-content style="min-height:80%;">
+      <section id="header">
+        <div class="text-center pa-5 ma-5">
+          <h1 class="black--text font-weight-bold">Sistema de Voto Automatizado</h1>
+          <br/>
+          <h2 class="black--text font-weight-light">Elecciones Ordinarias Generales Municipales 16 Febrero 2020</h2>          
+          <h4 class="grey--text font-weight-light">Seleccione el candidato de su preferencia</h4>
+        </div>
+      </section>
+
+      <router-view />
     </v-content>
+
+    <div>
+      <Social />
+      <Footer />
+    </div>
   </v-app>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import Vue from "vue";
+import Footer from "./components/Footer.vue";
+import Social from "./components/Social.vue";
 
 export default Vue.extend({
-  name: 'App',
-
+  name: "App",
   components: {
-    HelloWorld,
+    Footer,
+    Social
   },
 
   data: () => ({
     //
-  }),
+  })
 });
 </script>
